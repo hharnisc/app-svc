@@ -1,19 +1,25 @@
 const {createError} = require('@hharnisc/micro-rpc')
 
-module.exports.validateAppitar = appatar => {
-  if (!appatar) {
-    throw createError({message: 'Missing Input Parameter: appatar'})
+const validateString = ({
+  value,
+  name
+}) => {
+  if (!value) {
+    throw createError({message: `Missing Input Parameter: ${name}`})
   }
-  if (typeof appatar !== 'string') {
-    throw createError({message: 'Invalid Input: appatar'})
+  if (typeof value !== 'string') {
+    throw createError({message: `Invalid Input: ${name}`})
   }
 }
 
-module.exports.validateSecret = secret => {
-  if (!secret) {
-    throw createError({message: 'Missing Input Parameter: secret'})
-  }
-  if (typeof secret !== 'string') {
-    throw createError({message: 'Invalid Input: secret'})
-  }
-}
+module.exports.validateAppitar = appatar =>
+  validateString({
+    value: appatar,
+    name: 'appatar'
+  })
+
+module.exports.validateSecret = secret =>
+validateString({
+  value: secret,
+  name: 'secret'
+})
