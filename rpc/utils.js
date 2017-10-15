@@ -48,4 +48,9 @@ module.exports.validateDomains = domains => {
   if (domains.length < 1) {
     throwInvalid({name: 'domains'})
   }
+  domains.forEach(domain => {
+    if (typeof domain !== 'string') {
+      throwInvalid({name: 'domains'})
+    }
+  })
 }

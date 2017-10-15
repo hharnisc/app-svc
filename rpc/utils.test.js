@@ -117,5 +117,21 @@ describe('rpc/utils', () => {
           .toBe(true)
       }
     })
+
+    it('should throw an error if a domain is not a string', () => {
+      try {
+        validateDomains(['test', {}])
+        throw new Error('this should throw')
+      } catch (err) {
+        expect(err.message)
+          .toBe('Invalid Input: domains')
+        expect(err.handled)
+          .toBe(true)
+      }
+    })
+    it('should validate a domain', () => {
+      validateDomains(['test', 'test2'])
+      validateDomains(['test'])
+    })
   })
 })
