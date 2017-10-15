@@ -29,10 +29,11 @@ describe('rpc/create', () => {
       })
   })
 
-  it('should throw an error if secret is missing', async () => {
+  it('should throw an error if input is missing', async () => {
     try {
       await create({}, {})
     } catch (err) {
+      // Secret just happens to be the first to get validated
       expect(err.message)
         .toBe('Missing Input Parameter: secret')
       expect(err.handled)

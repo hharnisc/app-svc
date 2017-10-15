@@ -1,4 +1,4 @@
-const {createError} = require('@hharnisc/micro-rpc')
+const {validateCreate} = require('../utils')
 
 module.exports = async ({
   secret,
@@ -8,9 +8,12 @@ module.exports = async ({
 }, {
   db
 }) => {
-  if (!secret) {
-    throw createError({message: 'Missing Input Parameter: secret'})
-  }
+  validateCreate({
+    secret,
+    appatar,
+    name,
+    domains
+  })
   const result = await db.insertOne({
     secret,
     appatar,
