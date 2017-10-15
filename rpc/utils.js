@@ -29,3 +29,9 @@ module.exports.validateName = name =>
     value: name,
     name: 'name'
   })
+
+module.exports.validateDomains = domains => {
+  if (!domains) {
+    throw createError({message: 'Missing Input Parameter: domains'})
+  }
+}

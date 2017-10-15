@@ -1,7 +1,8 @@
 const {
   validateAppitar,
   validateSecret,
-  validateName
+  validateName,
+  validateDomains
 } = require('./utils')
 
 describe('rpc/utils', () => {
@@ -74,6 +75,20 @@ describe('rpc/utils', () => {
       } catch (err) {
         expect(err.message)
           .toBe('Invalid Input: name')
+        expect(err.handled)
+          .toBe(true)
+      }
+    })
+  })
+
+  describe('validateDomains', () => {
+    it('should throw an error if missing domains', () => {
+      try {
+        validateDomains()
+        throw new Error('this should throw')
+      } catch (err) {
+        expect(err.message)
+          .toBe('Missing Input Parameter: domains')
         expect(err.handled)
           .toBe(true)
       }
