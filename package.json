@@ -1,0 +1,44 @@
+{
+  "name": "user-svc",
+  "version": "0.0.1",
+  "description": "User management service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "xo && jest",
+    "test-watch": "jest --watch"
+  },
+  "xo": {
+    "space": true,
+    "semicolon": false,
+    "envs": [
+      "node",
+      "jest"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hharnisc/user-svc.git"
+  },
+  "keywords": [
+    "user",
+    "service"
+  ],
+  "author": "hharnisc@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hharnisc/user-svc/issues"
+  },
+  "homepage": "https://github.com/hharnisc/user-svc#readme",
+  "dependencies": {
+    "@hharnisc/micro-rpc": "0.1.0",
+    "micro": "9.0.0",
+    "mongodb": "2.2.31"
+  },
+  "devDependencies": {
+    "jest": "21.2.1",
+    "request-promise": "4.2.2",
+    "test-listen": "1.0.2",
+    "xo": "^0.18.2"
+  }
+}
