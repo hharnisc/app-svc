@@ -8,3 +8,12 @@ module.exports.validateAppitar = appatar => {
     throw createError({message: 'Invalid Input: appatar'})
   }
 }
+
+module.exports.validateSecret = secret => {
+  if (!secret) {
+    throw createError({message: 'Missing Input Parameter: secret'})
+  }
+  if (typeof secret !== 'string') {
+    throw createError({message: 'Invalid Input: secret'})
+  }
+}
