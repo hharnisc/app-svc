@@ -45,4 +45,7 @@ module.exports.validateDomains = domains => {
   if (!Array.isArray(domains)) {
     throwInvalid({name: 'domains'})
   }
+  if (domains.length < 1) {
+    throwInvalid({name: 'domains'})
+  }
 }

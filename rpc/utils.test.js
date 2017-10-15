@@ -105,5 +105,17 @@ describe('rpc/utils', () => {
           .toBe(true)
       }
     })
+
+    it('should throw an error if domains empty', () => {
+      try {
+        validateDomains([])
+        throw new Error('this should throw')
+      } catch (err) {
+        expect(err.message)
+          .toBe('Invalid Input: domains')
+        expect(err.handled)
+          .toBe(true)
+      }
+    })
   })
 })
