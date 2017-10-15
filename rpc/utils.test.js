@@ -1,6 +1,7 @@
 const {
   validateAppitar,
-  validateSecret
+  validateSecret,
+  validateName
 } = require('./utils')
 
 describe('rpc/utils', () => {
@@ -48,6 +49,31 @@ describe('rpc/utils', () => {
       } catch (err) {
         expect(err.message)
           .toBe('Invalid Input: secret')
+        expect(err.handled)
+          .toBe(true)
+      }
+    })
+  })
+
+  describe('validateName', () => {
+    it('should throw an error if missing name', () => {
+      try {
+        validateName()
+        throw new Error('this should throw')
+      } catch (err) {
+        expect(err.message)
+          .toBe('Missing Input Parameter: name')
+        expect(err.handled)
+          .toBe(true)
+      }
+    })
+    it('should throw an error if name is not a string', () => {
+      try {
+        validateName(1234)
+        throw new Error('this should throw')
+      } catch (err) {
+        expect(err.message)
+          .toBe('Invalid Input: name')
         expect(err.handled)
           .toBe(true)
       }

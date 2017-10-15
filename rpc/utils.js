@@ -19,7 +19,13 @@ module.exports.validateAppitar = appatar =>
   })
 
 module.exports.validateSecret = secret =>
-validateString({
-  value: secret,
-  name: 'secret'
-})
+  validateString({
+    value: secret,
+    name: 'secret'
+  })
+
+module.exports.validateName = name =>
+  validateString({
+    value: name,
+    name: 'name'
+  })
