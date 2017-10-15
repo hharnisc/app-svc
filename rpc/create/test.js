@@ -28,4 +28,15 @@ describe('rpc/create', () => {
         id
       })
   })
+
+  it('should throw an error if secret is missing', async () => {
+    try {
+      await create({}, {})
+    } catch (err) {
+      expect(err.message)
+        .toBe('Missing Input Parameter: secret')
+      expect(err.handled)
+        .toBe(true)
+    }
+  })
 })

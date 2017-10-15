@@ -1,3 +1,5 @@
+const {createError} = require('@hharnisc/micro-rpc')
+
 module.exports = async ({
   secret,
   appatar,
@@ -6,6 +8,9 @@ module.exports = async ({
 }, {
   db
 }) => {
+  if (!secret) {
+    throw createError({message: 'Missing Input Parameter: secret'})
+  }
   const result = await db.insertOne({
     secret,
     appatar,
