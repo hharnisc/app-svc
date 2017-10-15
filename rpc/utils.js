@@ -20,7 +20,7 @@ const validateString = ({
   }
 }
 
-module.exports.validateAppitar = appatar =>
+module.exports.validateAppatar = appatar =>
   validateString({
     value: appatar,
     name: 'appatar'
@@ -53,4 +53,16 @@ module.exports.validateDomains = domains => {
       throwInvalid({name: 'domains'})
     }
   })
+}
+
+module.exports.validateCreate = ({
+  secret,
+  appatar,
+  name,
+  domains
+}) => {
+  module.exports.validateSecret(secret)
+  module.exports.validateAppatar(appatar)
+  module.exports.validateName(name)
+  module.exports.validateDomains(domains)
 }

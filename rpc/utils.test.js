@@ -1,15 +1,16 @@
 const {
-  validateAppitar,
+  validateAppatar,
   validateSecret,
   validateName,
-  validateDomains
+  validateDomains,
+  validateCreate
 } = require('./utils')
 
 describe('rpc/utils', () => {
-  describe('validateAppitar', () => {
+  describe('validateAppatar', () => {
     it('should throw an error if missing appatar', () => {
       try {
-        validateAppitar()
+        validateAppatar()
         throw new Error('this should throw')
       } catch (err) {
         expect(err.message)
@@ -20,7 +21,7 @@ describe('rpc/utils', () => {
     })
     it('should throw an error if appatar is not a string', () => {
       try {
-        validateAppitar(1234)
+        validateAppatar(1234)
         throw new Error('this should throw')
       } catch (err) {
         expect(err.message)
@@ -132,6 +133,17 @@ describe('rpc/utils', () => {
     it('should validate a domain', () => {
       validateDomains(['test', 'test2'])
       validateDomains(['test'])
+    })
+  })
+
+  describe('validateCreate', () => {
+    it('should validate a create input', () => {
+      validateCreate({
+        secret: 's3cret',
+        appatar: 'http://someurl.com/image.jpg',
+        name: 'LaCroix as a Service',
+        domains: ['lcaas.com']
+      })
     })
   })
 })
